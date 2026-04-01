@@ -6,13 +6,6 @@ class releaseDate {
         this.other = other; //Other refers to a platform or geographical area
     }
 
-    constructor() {
-        this.year = 0;
-        this.month = 0;
-        this.day = 0;
-        this.other = 0;
-    }
-
     getYear() {
         return year;
     }
