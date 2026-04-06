@@ -78,7 +78,7 @@ body {
 }
 
 .hero-logo {
-  width: min(8vw, 80px);
+  width: min(8vw, 81px);
   max-width: 100%;
   height: auto;
   display: block;
