@@ -1,0 +1,32 @@
+:root {
+  --bg-dark: #173648;
+  --bg-mid: #2f6669;
+  --bg-panel: #274c5d;
+  --bg-caption: #93a0a1;
+  --bg-logo: rgba(37, 92, 97, 0.72);
+  --text-light: #f3ede6;
+  --text-soft: #ece7df;
+  --accent-line: #ddd3c8;
+  --button-bg: #2f6669;
+  --button-hover: #3d7f82;
+  --glow-main: rgba(226, 247, 255, 0.95);
+  --glow-soft: rgba(172, 238, 245, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to bottom, #376e70 0%, #18384b 100%);
+  color: var(--text-light);
+  min-height: 100%;
+}
+
+div {
+    margin: 0;
+    width: 90%;
+}
