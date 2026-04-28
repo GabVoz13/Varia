@@ -1,16 +1,61 @@
 const heroSlides = document.querySelectorAll(".hero-slide");
-const featureSlides = document.querySelectorAll(".feature-slide");
-const dots = document.querySelectorAll(".dot");
+const featureSlidesContainer = document.querySelector(".feature-slides");
+const dotsContainer = document.querySelector(".feature-caption-center");
 const featureTitle = document.getElementById("featureTitle");
 const featureButton = document.getElementById("featureButton");
 const prevSlideBtn = document.getElementById("prevSlide");
 const nextSlideBtn = document.getElementById("nextSlide");
-const neonLogo = document.getElementById("neonLogo");
 
 let heroIndex = 0;
 let featureIndex = 0;
 let heroInterval;
 let featureInterval;
+let featureSlides;
+let dots;
+
+function buildSlides() {
+  featureSlidesContainer.innerHTML = "";
+  dotsContainer.innerHTML = "";
+
+  EVENTS.forEach((event, i) => {
+    const article = document.createElement("article");
+    article.className = "feature-slide" + (i === 0 ? " active" : "");
+    article.dataset.title = event.title;
+    article.dataset.link = event.link;
+
+    if (event.type === "iframe") {
+      const iframe = document.createElement("iframe");
+      iframe.src = event.src;
+      iframe.title = event.title;
+      iframe.loading = "lazy";
+      article.appendChild(iframe);
+    } else {
+      const img = document.createElement("img");
+      img.src = event.src;
+      img.alt = event.alt || event.title;
+      article.appendChild(img);
+    }
+
+    featureSlidesContainer.appendChild(article);
+
+    const dot = document.createElement("button");
+    dot.className = "dot" + (i === 0 ? " active" : "");
+    dot.dataset.slide = i;
+    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    dotsContainer.appendChild(dot);
+  });
+
+  featureSlides = document.querySelectorAll(".feature-slide");
+  dots = document.querySelectorAll(".dot");
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      featureIndex = Number(dot.dataset.slide);
+      showFeatureSlide(featureIndex);
+      resetFeatureRotation();
+    });
+  });
+}
 
 function showHeroSlide(index) {
   heroSlides.forEach((slide, i) => {
@@ -71,16 +116,8 @@ prevSlideBtn.addEventListener("click", () => {
   resetFeatureRotation();
 });
 
-dots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    featureIndex = Number(dot.dataset.slide);
-    showFeatureSlide(featureIndex);
-    resetFeatureRotation();
-  });
-});
-
 window.addEventListener("load", () => {
-  neonLogo.classList.add("power-on");
+  buildSlides();
   showHeroSlide(heroIndex);
   showFeatureSlide(featureIndex);
   startHeroRotation();
