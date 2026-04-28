@@ -25,8 +25,9 @@
       </div>
 
       <div class="hero-logo-panel">
-        <video autoplay loop muted playsinline>
-          <source src="images/Varia_logo.mp4" type="video/mp4" />
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="Images/render.webm" type="video/webm" />
+          <source src="render.mov" type="video/quicktime" />
         </video>
       </div>
     </section>
@@ -49,26 +50,15 @@
   </header>
   <main class="page-shell">
     <section class="feature-slider" aria-label="Featured events">
-      <div class="feature-slides">
-        <article class="feature-slide active" data-title="Event Name 1" data-link="events.html">
-          <img src="images/slide-1.jpg" alt="Placeholder for event 1" />
-        </article>
-
-        <article class="feature-slide" data-title="Event Name 2" data-link="events.html">
-          <img src="images/slide-2.jpg" alt="Placeholder for event 2" />
-        </article>
-      </div>
+      <div class="feature-slides"></div>
 
       <div class="feature-caption-bar">
         <div class="feature-caption-left">
-          <h2 id="featureTitle">Event Name 1</h2>
-          <a id="featureButton" class="feature-button" href="events.html">View Event</a>
+          <h2 id="featureTitle"></h2>
+          <a id="featureButton" class="feature-button" href="#">View Event</a>
         </div>
 
-        <div class="feature-caption-center" aria-label="Slide indicators">
-          <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
-          <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
-        </div>
+        <div class="feature-caption-center" aria-label="Slide indicators"></div>
 
         <div class="feature-caption-right">
           <button class="arrow-btn" id="prevSlide" aria-label="Previous slide">‹</button>
@@ -77,6 +67,7 @@
       </div>
     </section>
   </main>
+  <script src="events-config.js"></script>
   <script src="script_index.js"></script>
     </body>
 </html>
